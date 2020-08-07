@@ -1,36 +1,33 @@
 package ru.dragonestia.itemlib.item;
 
-import cn.nukkit.item.Item;
 import ru.dragonestia.itemlib.ItemPrefabs;
 import ru.dragonestia.itemlib.util.ItemJSON;
 
-import java.util.Arrays;
-
 public class CustomItem {
 
-    private final Item item;
+    private final cn.nukkit.item.Item item;
 
     private final int id;
 
-    public CustomItem(int id, Item item){
-        if(id >= 0) throw new InvalidIdForCustomItemError();
+    public CustomItem(int id, cn.nukkit.item.Item item){
+        if(id <= ItemPrefabs.BORDER) throw new InvalidIdForCustomItemError();
 
         this.item = item;
         this.id = id;
     }
 
-    //always: id < 0
+    //always: id > ItemPrefabs.BORDER
     public int getId(){
         return id;
     }
 
-    public Item getItem(int count){
-        Item item = this.item.clone();
+    public cn.nukkit.item.Item getItem(int count){
+        cn.nukkit.item.Item item = this.item.clone();
         item.setCount(count);
         return item;
     }
 
-    public Item getItem(){
+    public cn.nukkit.item.Item getItem(){
         return getItem(1);
     }
 
@@ -50,6 +47,22 @@ public class CustomItem {
             return obj.equals(item);
         }
         return false;
+    }
+
+    public static class Item {
+
+        public static cn.nukkit.item.Item get(int id, int damage, int count){
+            return id > 1000? CustomItem.get(id).getItem(count) : cn.nukkit.item.Item.get(id, damage, count);
+        }
+
+        public static cn.nukkit.item.Item get(int id, int damage){
+            return get(id, damage, 1);
+        }
+
+        public static cn.nukkit.item.Item get(int id){
+            return get(id, 0, 1);
+        }
+
     }
 
 }

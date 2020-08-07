@@ -6,6 +6,7 @@ import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.item.Item;
+import ru.dragonestia.itemlib.ItemPrefabs;
 import ru.dragonestia.itemlib.item.CustomItem;
 
 public class GiveCommand extends Command {
@@ -24,7 +25,7 @@ public class GiveCommand extends Command {
 
     @Override
     public boolean execute(CommandSender commandSender, String label, String[] args) {
-        Player player = null;
+        Player player;
         int id, damage = 0, count = 1;
 
         if(args.length < 4){
@@ -75,8 +76,8 @@ public class GiveCommand extends Command {
             return false;
         }
 
-        Item item = null;
-        if(id < 0){
+        Item item;
+        if(id > ItemPrefabs.BORDER){
             item = CustomItem.get(id).getItem(count);
         }else item = new Item(id, damage, count);
 

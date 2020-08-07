@@ -7,6 +7,8 @@ import ru.dragonestia.itemlib.item.PrefabManager;
 
 public class ItemPrefabs extends PluginBase {
 
+    public final static int BORDER = 1000;
+
     private final PrefabManager prefabManager = new PrefabManager(this);
 
     private static ItemPrefabs instance;

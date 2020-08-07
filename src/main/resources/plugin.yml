@@ -1,0 +1,9 @@
+name: ItemPrefabs
+main: ru.dragonestia.itemlib.ItemPrefabs
+api: 1.0.8
+version: 1.0.0
+author: qPexLegendary
+
+permissions:
+  item.command.give:
+    default: op

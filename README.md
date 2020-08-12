@@ -43,7 +43,7 @@ public void onLoad(){
   manager.registerCustomItem(new UnrealStoneCustomItem());
 }
 ```
-### Поучение префаба
+### Получение префаба
 Для того чтобы получить префаб воспользуйтесь методом ru.dragonestia.itemlib.item.`CustomItem.Item.get()`.
 
 Пример:
